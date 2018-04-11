@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>Fitness App</title>
+    <link rel="stylesheet" type="text/css" href="fitness.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="index.js"></script>
+    
+</head>
+    
+   
+<body> 
+    
+     <div class="myPanel" id="myPanel"> 
+            
+           
+         <h2>Navigate Between Pages</h2>
+   
+            <p>You can close the panel by clicking outside the panel, pressing the Esc key, by swiping, or by clicking the button below:</p>
+         
+         <a href="#pageone" class= "ui-btn ui-icon-home ui-btn-icon-left"> Home </a> 
+            
+            <a href="#running" class = "ui-btn ui-btn-icon-left ui-icon-navigation ">Running Tracker</a>
+            
+            <a href="#pedometer" class ="ui-btn ui-icon-info ui-btn-icon-left" data-icon = "plus" >Your Routes</a>
+ 
+        </div> 
+    
+    
+    
+    <div data-role="page" id="pageone">
+  
+        <div data-role="header">
+   
+            <h1>Running Buddy</h1>
+            
+            <a href="#myPanel"class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-home ui-btn-icon-left" data-icon="home">  Home </a>
+            
+            <div align= "center">
+               
+                <div align="right" id="home_network_button" class="ui-icon ui-btn-icon-notext ui-icon-check" > </div>
+                
+                Internet Access Enabled
+
+             </div>
+            
+        </div>
+    
+        
+        
+        
+ <div data-role="main" class="ui-content">
+     
+     <p align= "center" > Use your running buddy to track and locate your routes. Use the menu to naviagte between the pages of the app. Get fit and have fun while using Running Buddy! </p>
+    
+  
+        </div>
+</div>
+    
+    
+        
+       <div data-role="page" id="running">
+           
+  <div data-role="header">
+      
+      
+    <h1>Running Tracker</h1>
+      
+        <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-home ui-btn-icon-left">Home</a>
+    
+      
+      </div>
+      
+      
+       <div data-role="main" class="ui-content">
+           
+        
+           
+      
+           </div>
+           
+            <div data-role="content" id="content">
+                
+                
+    <p id="startTracking_status"></p>
+                
+      <div data-role="fieldcontain" class="ui-hide-label">
+          
+        <label for="track_id">Track ID/Name:</label>
+        <input type="text" name="track_id" id="track_id" placeholder="Workout ID/Name"/>
+          
+      </div>
+ 
+    <button data-role="button" id="startTracking_start">Start Tracking</button>
+    <button data-role="button" id="startTracking_stop">Stop Tracking</button>  
+     
+        <p id="startTracking_debug"></p>
+                
+                
+         
+                <div id="map_canvas" style="height:100%"></div>
+            </div>
+           
+    
+               
+           </div>
+        
+
+    
+    
+    
+    
+     <div data-role="page" id="pedometer">
+           
+  <div data-role="header">
+      <h1>Your Routes</h1>
+      
+       <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-home ui-btn-left-home">Home</a>
+      
+         </div>
+    
+         
+     <div data-role="main" class="ui-content">
+         
+        <p id="tracks_recorded"></p> <!-- Will display all the recorded movements here --> 
+           
+         <button id="clear">Clear local storage</button>
+         
+        <ul data-role="listview" id="routehistory">
+ 
+        </ul>
+
+    </div>
+ 
+        
+         </div>
+    
+    
+    </body>
+
+</html> 
