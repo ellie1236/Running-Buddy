@@ -3,7 +3,7 @@ document.addEventListener("deviceready", function () {
   
     
     if (navigator.network.connection.type == Connection.NONE){
-    $("#home_network_button").text('No Internet Access')
+    $("#networkbutton").text('No Internet Access')
                  .attr("data-icon", "delete")
                  .button('refresh');
   }
@@ -31,7 +31,22 @@ $(document).on('pageshow', '#running', function (e, data) {
             mapTypeId: google.maps.MapTypeId.ROADMAP  , 
             
             });
-      
+     var latlng = new google.maps.LatLng(52.190084, -2.243133);
+
+function addmarker(latilongi) { //this function will allow the user to place on markers
+    var marker = new google.maps.Marker({
+        position: latilongi,
+        title: 'Running Marker',
+        draggable: true,
+        map: map
+    });
+   
+    map.setCenter(marker.getPosition())
+}
+
+$('#btnaddmarker').on('click', function() { 
+    addmarker(latlng)
+}) 
       
     infoWindow = new google.maps.InfoWindow;
       
@@ -124,14 +139,14 @@ $('#pedometer').on('pageshow', function () {
    
   // Count the number of entries in localStorage and display this information to the user
   tracks_recorded = window.localStorage.length;
-  $("#routehistory").html("<strong>" + tracks_recorded + "</strong> workout(s) recorded");
+  $("#tracks_recorded").html("<strong>" + tracks_recorded + "</strong> workout(s) recorded");
    
   // Empty the list of recorded tracks
   $("#routehistory").empty();
    
   // Iterate over all of the recorded tracks, populating the list
   for(i=0; i<tracks_recorded; i++){
-    $("#routehistory").append("<li><a href='#track_info' data-ajax='false'>" + window.localStorage.key(i) + "</a></li>");
+    $("#routehistory").append("<li><a href='#pedometer' data-ajax='false'>" + window.localStorage.key(i) + "</a></li>");
   }
    
   // Tell jQueryMobile to refresh the list
@@ -139,8 +154,31 @@ $('#pedometer').on('pageshow', function () {
  
 });
       
-    $("clear").on('click', function(){
+    $("clear").on('click', function(){          //should clear all the local storage's history 
     window.localStorage.clear();
 });
     
+ $("#history_tracklist li a").on('click', function(){
+ 
+  $("#track_info").attr("track_id", $(this).text());
+   
+});
+ 
+//   
+$('#track_info').on('pageshow', function(){
+ 
+  // Find the track_id of the workout they are viewing
+  var key = $(this).attr("track_id");
+   
+  // Update the Track Info page header to the track_id
+  $("#track_info div[data-role=header] h1").text(key);
+   
+  // Get all the GPS data for the specific workout
+  var data = window.localStorage.getItem(key);
+   
+  // Turn the stringified GPS data back into a JS object
+  data = JSON.parse(data);   
+    
 })
+    
+});

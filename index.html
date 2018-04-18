@@ -33,6 +33,7 @@
     
     
     
+    
     <div data-role="page" id="pageone">
   
         <div data-role="header">
@@ -43,7 +44,7 @@
             
             <div align= "center">
                
-                <div align="right" id="home_network_button" class="ui-icon ui-btn-icon-notext ui-icon-check" > </div>
+                <div align="right" id="networkbutton" class="ui-icon ui-btn-icon-notext ui-icon-check" > </div>
                 
                 Internet Access Enabled
 
@@ -79,7 +80,7 @@
       
        <div data-role="main" class="ui-content">
            
-        
+         
            
       
            </div>
@@ -98,10 +99,11 @@
  
     <button data-role="button" id="startTracking_start">Start Tracking</button>
     <button data-role="button" id="startTracking_stop">Stop Tracking</button>  
+       <button data-role="button" id="btnaddmarker">Add Marker</button>         
      
         <p id="startTracking_debug"></p>
                 
-                
+                <p id="track_info_info"></p>
          
                 <div id="map_canvas" style="height:100%"></div>
             </div>
@@ -127,9 +129,11 @@
          
      <div data-role="main" class="ui-content">
          
+         
+         
         <p id="tracks_recorded"></p> <!-- Will display all the recorded movements here --> 
            
-         <button id="clear">Clear local storage</button>
+         
          
         <ul data-role="listview" id="routehistory">
  
@@ -139,6 +143,24 @@
  
         
          </div>
+    
+ <div data-role="page" id="track_info">
+ 
+  <div data-role="header">
+    <h1>Viewing Single Workout</h1>
+      
+      <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-mini ui-icon-home ui-btn-left-home">Home</a>
+     
+  </div>
+ 
+  <div data-role="content"> 
+    <p id="track_info_info"></p>
+     
+     
+  </div>
+ 
+ 
+</div>
     
     
     </body>
